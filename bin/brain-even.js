@@ -6,15 +6,15 @@ import * as cli from "../src/cli.js";
 try {
   console.log("Welcome to the Brain Games!");
 
-  const name = readlineSync.question("May I have your name? ");
+  const userName = readlineSync.question("May I have your name? ");
 
-  if (name) {
-    console.log(`Hello, ${name}!`);
+  if (userName) {
+    console.log(`Hello, ${userName}!`);
   } else {
     throw new Error("Name is required!");
   }
 
-  console.log(`'Answer "yes" if the number is even, otherwise answer "no".'`);
+  console.log('Answer "yes" if the number is even, otherwise answer "no".');
 
   let correctAnswerCount = 0;
 
@@ -35,12 +35,12 @@ try {
     } else {
       correctAnswerCount = -1;
       console.log("'yes' is wrong answer ;(. Correct answer was 'no'.");
-      console.log("Let's try again, Bill!");
+      console.log(`Let's try again, ${userName}`);
     }
   }
 
   if (correctAnswerCount === 3) {
-    console.log("Congratulations, Sam!");
+    console.log(`Congratulations, ${userName}!`);
   }
 } catch (e) {
   console.log(e);
