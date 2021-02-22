@@ -19,13 +19,13 @@ try {
   let correctAnswerCount = 0;
 
   while (correctAnswerCount < 3 && correctAnswerCount > -1) {
-    const randomNumber = cli.getRandomNumber();
+    const numberToCheck = cli.getRandomNumber();
 
-    console.log(`Question: ${randomNumber}`);
+    console.log(`Question: ${numberToCheck}`);
 
     const userAnswer = readlineSync.question("Your answer: ");
 
-    const isEven = cli.isEven(Number(randomNumber));
+    const isEven = cli.isEven(Number(numberToCheck));
     const isCorrectAnswer =
       (isEven && userAnswer === "yes") || (!isEven && userAnswer === "no");
 
