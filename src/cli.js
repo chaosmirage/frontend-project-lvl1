@@ -1,13 +1,17 @@
-export const getRandomNumber = () => Math.round(Math.random() * 100);
+import runCalc from "./games/brain-calc.js";
+import runEven from "./games/brain-even.js";
+import runGames from "./games/brain-games.js";
 
-export const isEven = (number) => {
-  if (!number) {
-    throw new Error("Number is empty");
+export default (gameName) => {
+  const run = {
+    calc: runCalc,
+    even: runEven,
+    games: runGames,
+  }[gameName];
+
+  if (!run) {
+    throw new Error(`Unexpected game: ${gameName}`);
   }
 
-  if (typeof number !== "number") {
-    throw new Error(`Unexpected type ${typeof number}`);
-  }
-
-  return number % 2 === 0;
+  run();
 };

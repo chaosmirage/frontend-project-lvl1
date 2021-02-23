@@ -2,4 +2,4 @@
 
 import cli from "../src/cli.js";
 
-cli("even");
+cli("calc");
