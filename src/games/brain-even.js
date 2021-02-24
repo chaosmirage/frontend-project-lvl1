@@ -1,4 +1,5 @@
 import { getRandomInt } from "../lib/random.js";
+import { checkIsEven } from "../lib/number.js";
 import run from "../index.js";
 
 const getGameRules = () =>
@@ -11,18 +12,6 @@ const getQuestion = () => {
     question: String(randomNumber),
     answer: randomNumber,
   };
-};
-
-const checkIsEven = (number) => {
-  if (!number) {
-    throw new Error("Number is empty");
-  }
-
-  if (typeof number !== "number") {
-    throw new Error(`Unexpected type ${typeof number}`);
-  }
-
-  return number % 2 === 0;
 };
 
 const getWrongAnswerMessage = (correctAnswer, userAnswer) => {
