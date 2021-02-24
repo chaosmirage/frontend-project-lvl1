@@ -40,7 +40,7 @@ export default ({
     } else {
       correctAnswerCount = -1;
       console.log(getWrongAnswerMessage(answer, userAnswer));
-      console.log(`Let's try again, ${userName}`);
+      console.log(`Let's try again, ${userName}!`);
     }
   }
 
