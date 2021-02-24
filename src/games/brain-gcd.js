@@ -43,7 +43,7 @@ const evaluateGCD = (leftOperand, rightOperand) => {
   return evaluateGCD((leftOperand - rightOperand) / 2, rightOperand);
 };
 
-const getQuestion = () => {
+const getTask = () => {
   const leftOperand = getRandomInt(1, 101);
   const rightOperand = getRandomInt(1, 101);
 
@@ -63,5 +63,5 @@ const checkUserAnswer = (correctAnswer, userAnswer) =>
   correctAnswer === Number(userAnswer);
 
 export default () => {
-  run({ getGameRules, getQuestion, checkUserAnswer, getWrongAnswerMessage });
+  run({ getGameRules, getTask, checkUserAnswer, getWrongAnswerMessage });
 };

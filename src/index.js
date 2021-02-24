@@ -2,7 +2,7 @@ import readlineSync from "readline-sync";
 
 export default ({
   maxRoundCount = 3,
-  getQuestion,
+  getTask,
   getGameRules,
   checkUserAnswer,
   getWrongAnswerMessage,
@@ -26,7 +26,7 @@ export default ({
   let correctAnswerCount = 0;
 
   while (correctAnswerCount < maxRoundCount && correctAnswerCount > -1) {
-    const { question, answer } = getQuestion();
+    const { question, answer } = getTask();
 
     console.log(`Question: ${question}`);
 

@@ -30,7 +30,7 @@ const evaluate = (leftOperand, operation, rightOperand) => {
   return leftOperand * rightOperand;
 };
 
-const getQuestion = () => {
+const getTask = () => {
   const leftOperand = getRandomInt(1, 101);
   const operation = getRandomArithmeticOperation();
   const rightOperand = getRandomInt(1, 101);
@@ -51,5 +51,5 @@ const checkUserAnswer = (correctAnswer, userAnswer) =>
   correctAnswer === Number(userAnswer);
 
 export default () => {
-  run({ getGameRules, getQuestion, checkUserAnswer, getWrongAnswerMessage });
+  run({ getGameRules, getTask, checkUserAnswer, getWrongAnswerMessage });
 };

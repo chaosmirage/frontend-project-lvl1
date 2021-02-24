@@ -5,7 +5,7 @@ import run from "../index.js";
 const getGameRules = () =>
   'Answer "yes" if the number is even, otherwise answer "no".';
 
-const getQuestion = () => {
+const getTask = () => {
   const randomNumber = getRandomInt(1, 100);
 
   return {
@@ -29,5 +29,5 @@ const checkUserAnswer = (correctAnswer, userAnswer) => {
 };
 
 export default () => {
-  run({ getGameRules, getQuestion, checkUserAnswer, getWrongAnswerMessage });
+  run({ getGameRules, getTask, checkUserAnswer, getWrongAnswerMessage });
 };
