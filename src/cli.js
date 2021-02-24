@@ -1,9 +1,9 @@
-import runCalc from "./games/brain-calc.js";
-import runEven from "./games/brain-even.js";
-import runGames from "./games/brain-games.js";
-import runGCD from "./games/brain-gcd.js";
-import runProgression from "./games/brain-progression.js";
-import runPrime from "./games/brain-prime.js";
+import runCalc from './games/brain-calc.js';
+import runEven from './games/brain-even.js';
+import runGames from './games/brain-games.js';
+import runGCD from './games/brain-gcd.js';
+import runProgression from './games/brain-progression.js';
+import runPrime from './games/brain-prime.js';
 
 export default (gameName) => {
   const run = {

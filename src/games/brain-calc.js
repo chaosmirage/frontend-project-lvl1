@@ -1,15 +1,15 @@
-import run from "../index.js";
-import { getRandomInt } from "../lib/random.js";
+import run from '../index.js';
+import { getRandomInt } from '../lib/random.js';
 
-const getGameRules = () => "What is the result of the expression?";
+const getGameRules = () => 'What is the result of the expression?';
 
 const getRandomArithmeticOperation = () => {
   const operationType = String(getRandomInt(1, 3));
 
   const operation = {
-    1: "+",
-    2: "-",
-    3: "*",
+    1: '+',
+    2: '-',
+    3: '*',
   }[operationType];
 
   if (!operation) {
@@ -20,10 +20,10 @@ const getRandomArithmeticOperation = () => {
 };
 
 const evaluate = (leftOperand, operation, rightOperand) => {
-  if (operation === "+") {
+  if (operation === '+') {
     return leftOperand + rightOperand;
   }
-  if (operation === "-") {
+  if (operation === '-') {
     return leftOperand - rightOperand;
   }
 
@@ -44,12 +44,12 @@ const getTask = () => {
   };
 };
 
-const getWrongAnswerMessage = (correctAnswer, userAnswer) =>
-  `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`;
+const getWrongAnswerMessage = (correctAnswer, userAnswer) => `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`;
 
-const checkUserAnswer = (correctAnswer, userAnswer) =>
-  correctAnswer === Number(userAnswer);
+const checkUserAnswer = (correctAnswer, userAnswer) => correctAnswer === Number(userAnswer);
 
 export default () => {
-  run({ getGameRules, getTask, checkUserAnswer, getWrongAnswerMessage });
+  run({
+    getGameRules, getTask, checkUserAnswer, getWrongAnswerMessage,
+  });
 };

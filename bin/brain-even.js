@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import cli from "../src/cli.js";
+import cli from '../src/cli.js';
 
 try {
-  cli("even");
+  cli('even');
 } catch (error) {
   console.log(error);
 }

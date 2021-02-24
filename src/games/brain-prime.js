@@ -1,8 +1,7 @@
-import run from "../index.js";
-import { getRandomInt } from "../lib/random.js";
+import run from '../index.js';
+import { getRandomInt } from '../lib/random.js';
 
-const getGameRules = () =>
-  'Answer "yes" if given number is prime. Otherwise answer "no".';
+const getGameRules = () => 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const checkIsPrime = (number) => {
   for (let i = 2; i <= Math.sqrt(number); i += 1) {
@@ -25,19 +24,20 @@ const getTask = () => {
 
 const getWrongAnswerMessage = (correctAnswer, userAnswer) => {
   const isPrime = checkIsPrime(correctAnswer);
-  const preparedCorrectAnswer = isPrime ? "yes" : "no";
+  const preparedCorrectAnswer = isPrime ? 'yes' : 'no';
 
   return `'${userAnswer}' is wrong answer ;(. Correct answer was '${preparedCorrectAnswer}'.`;
 };
 
 const checkUserAnswer = (correctAnswer, userAnswer) => {
   const isPrime = checkIsPrime(correctAnswer);
-  const isCorrectAnswer =
-    (isPrime && userAnswer === "yes") || (!isPrime && userAnswer === "no");
+  const isCorrectAnswer = (isPrime && userAnswer === 'yes') || (!isPrime && userAnswer === 'no');
 
   return isCorrectAnswer;
 };
 
 export default () => {
-  run({ getGameRules, getTask, checkUserAnswer, getWrongAnswerMessage });
+  run({
+    getGameRules, getTask, checkUserAnswer, getWrongAnswerMessage,
+  });
 };

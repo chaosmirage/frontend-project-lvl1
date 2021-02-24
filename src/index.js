@@ -1,4 +1,4 @@
-import readlineSync from "readline-sync";
+import readlineSync from 'readline-sync';
 
 export default ({
   maxRoundCount = 3,
@@ -7,14 +7,14 @@ export default ({
   checkUserAnswer,
   getWrongAnswerMessage,
 }) => {
-  console.log("Welcome to the Brain Games!");
+  console.log('Welcome to the Brain Games!');
 
-  const userName = readlineSync.question("May I have your name? ");
+  const userName = readlineSync.question('May I have your name? ');
 
   if (userName) {
     console.log(`Hello, ${userName}!`);
   } else {
-    throw new Error("Name is required!");
+    throw new Error('Name is required!');
   }
 
   if (!getGameRules) {
@@ -30,12 +30,12 @@ export default ({
 
     console.log(`Question: ${question}`);
 
-    const userAnswer = readlineSync.question("Your answer: ");
+    const userAnswer = readlineSync.question('Your answer: ');
 
     const isCorrectAnswer = checkUserAnswer(answer, userAnswer);
 
     if (isCorrectAnswer) {
-      console.log("Correct!");
+      console.log('Correct!');
       correctAnswerCount += 1;
     } else {
       correctAnswerCount = -1;

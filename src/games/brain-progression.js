@@ -1,7 +1,7 @@
-import run from "../index.js";
-import { getRandomInt } from "../lib/random.js";
+import run from '../index.js';
+import { getRandomInt } from '../lib/random.js';
 
-const getGameRules = () => "What number is missing in the progression?";
+const getGameRules = () => 'What number is missing in the progression?';
 
 const makeProgression = (length) => {
   const firstNumber = getRandomInt(1, 100);
@@ -24,12 +24,12 @@ const getTask = () => {
   const question = progression
     .reduce((acc, number, index) => {
       if (index === hiddenElementIndex) {
-        return [...acc, ".."];
+        return [...acc, '..'];
       }
 
       return [...acc, number];
     }, [])
-    .join(" ");
+    .join(' ');
 
   const answer = progression[hiddenElementIndex];
 
@@ -39,12 +39,12 @@ const getTask = () => {
   };
 };
 
-const getWrongAnswerMessage = (correctAnswer, userAnswer) =>
-  `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`;
+const getWrongAnswerMessage = (correctAnswer, userAnswer) => `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`;
 
-const checkUserAnswer = (correctAnswer, userAnswer) =>
-  correctAnswer === Number(userAnswer);
+const checkUserAnswer = (correctAnswer, userAnswer) => correctAnswer === Number(userAnswer);
 
 export default () => {
-  run({ getGameRules, getTask, checkUserAnswer, getWrongAnswerMessage });
+  run({
+    getGameRules, getTask, checkUserAnswer, getWrongAnswerMessage,
+  });
 };

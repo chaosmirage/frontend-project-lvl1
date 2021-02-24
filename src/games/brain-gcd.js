@@ -1,8 +1,8 @@
-import run from "../index.js";
-import { getRandomInt } from "../lib/random.js";
-import { checkIsEven } from "../lib/number.js";
+import run from '../index.js';
+import { getRandomInt } from '../lib/random.js';
+import { checkIsEven } from '../lib/number.js';
 
-const getGameRules = () => "Find the greatest common divisor of given numbers.";
+const getGameRules = () => 'Find the greatest common divisor of given numbers.';
 
 const evaluateGCD = (leftOperand, rightOperand) => {
   if (leftOperand === 0) {
@@ -34,8 +34,8 @@ const evaluateGCD = (leftOperand, rightOperand) => {
   }
 
   if (
-    !(checkIsEven(leftOperand) && checkIsEven(rightOperand)) &&
-    rightOperand > leftOperand
+    !(checkIsEven(leftOperand) && checkIsEven(rightOperand))
+    && rightOperand > leftOperand
   ) {
     return evaluateGCD((rightOperand - leftOperand) / 2, leftOperand);
   }
@@ -56,12 +56,12 @@ const getTask = () => {
   };
 };
 
-const getWrongAnswerMessage = (correctAnswer, userAnswer) =>
-  `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`;
+const getWrongAnswerMessage = (correctAnswer, userAnswer) => `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`;
 
-const checkUserAnswer = (correctAnswer, userAnswer) =>
-  correctAnswer === Number(userAnswer);
+const checkUserAnswer = (correctAnswer, userAnswer) => correctAnswer === Number(userAnswer);
 
 export default () => {
-  run({ getGameRules, getTask, checkUserAnswer, getWrongAnswerMessage });
+  run({
+    getGameRules, getTask, checkUserAnswer, getWrongAnswerMessage,
+  });
 };
