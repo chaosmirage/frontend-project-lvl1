@@ -4,6 +4,10 @@ import { getRandomInt } from '../lib/random.js';
 const getGameRules = () => 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const checkIsPrime = (number) => {
+  if (number === 1) {
+    return false;
+  }
+
   for (let i = 2; i <= Math.sqrt(number); i += 1) {
     if (number % i === 0) {
       return false;
@@ -38,6 +42,9 @@ const checkUserAnswer = (correctAnswer, userAnswer) => {
 
 export default () => {
   run({
-    getGameRules, getTask, checkUserAnswer, getWrongAnswerMessage,
+    getGameRules,
+    getTask,
+    checkUserAnswer,
+    getWrongAnswerMessage,
   });
 };
