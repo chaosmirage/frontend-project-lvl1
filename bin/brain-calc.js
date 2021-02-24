@@ -2,4 +2,8 @@
 
 import cli from "../src/cli.js";
 
-cli("calc");
+try {
+  cli("calc");
+} catch (error) {
+  console.log(error);
+}

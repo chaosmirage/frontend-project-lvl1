@@ -2,4 +2,8 @@
 
 import cli from "../src/cli.js";
 
-cli("games");
+try {
+  cli("games");
+} catch (error) {
+  console.log(error);
+}

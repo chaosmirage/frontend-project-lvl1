@@ -2,4 +2,8 @@
 
 import cli from "../src/cli.js";
 
-cli("even");
+try {
+  cli("even");
+} catch (error) {
+  console.log(error);
+}
