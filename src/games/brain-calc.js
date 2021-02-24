@@ -31,9 +31,9 @@ const evaluate = (leftOperand, operation, rightOperand) => {
 };
 
 const getTask = () => {
-  const leftOperand = getRandomInt(1, 101);
+  const leftOperand = getRandomInt(1, 100);
   const operation = getRandomArithmeticOperation();
-  const rightOperand = getRandomInt(1, 101);
+  const rightOperand = getRandomInt(1, 100);
 
   const question = `${leftOperand} ${operation} ${rightOperand}`;
   const answer = evaluate(leftOperand, operation, rightOperand);
