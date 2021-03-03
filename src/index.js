@@ -1,12 +1,8 @@
 import readlineSync from 'readline-sync';
 
-export default ({
-  maxRoundCount = 3,
-  getTask,
-  getGameRules,
-  checkUserAnswer,
-  getWrongAnswerMessage,
-}) => {
+export const roundsCount = 3;
+
+export default ({ description, rounds }) => {
   console.log('Welcome to the Brain Games!');
 
   const userName = readlineSync.question('May I have your name? ');
@@ -17,34 +13,25 @@ export default ({
     throw new Error('Name is required!');
   }
 
-  if (!getGameRules) {
-    return;
-  }
+  console.log(description);
 
-  console.log(getGameRules());
-
-  let correctAnswerCount = 0;
-
-  while (correctAnswerCount < maxRoundCount && correctAnswerCount > -1) {
-    const { question, answer } = getTask();
-
+  // eslint-disable-next-line no-restricted-syntax
+  for (const [question, correctAnswer] of rounds) {
     console.log(`Question: ${question}`);
 
     const userAnswer = readlineSync.question('Your answer: ');
+    const isUserAnswerWrong = userAnswer !== correctAnswer;
 
-    const isCorrectAnswer = checkUserAnswer(answer, userAnswer);
-
-    if (isCorrectAnswer) {
-      console.log('Correct!');
-      correctAnswerCount += 1;
-    } else {
-      correctAnswerCount = -1;
-      console.log(getWrongAnswerMessage(answer, userAnswer));
+    if (isUserAnswerWrong) {
+      console.log(
+        `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'`
+      );
       console.log(`Let's try again, ${userName}!`);
+      return;
     }
+
+    console.log('Correct!');
   }
 
-  if (correctAnswerCount === 3) {
-    console.log(`Congratulations, ${userName}!`);
-  }
+  console.log(`Congratulations, ${userName}!`);
 };

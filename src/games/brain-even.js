@@ -1,33 +1,29 @@
 import { getRandomInt } from '../lib/random.js';
 import { checkIsEven } from '../lib/number.js';
-import run from '../index.js';
+import run, { roundsCount } from '../index.js';
 
-const getGameRules = () => 'Answer "yes" if the number is even, otherwise answer "no".';
+const description =
+  'Answer "yes" if the number is even, otherwise answer "no".';
 
-const getTask = () => {
+const makeRound = () => {
   const randomNumber = getRandomInt(1, 100);
+  const question = String(randomNumber);
 
-  return {
-    question: String(randomNumber),
-    answer: randomNumber,
-  };
-};
+  const isEven = checkIsEven(randomNumber);
+  const answer = isEven ? 'yes' : 'no';
 
-const getWrongAnswerMessage = (correctAnswer, userAnswer) => {
-  const isEven = checkIsEven(correctAnswer);
-  const preparedCorrectAnswer = isEven ? 'yes' : 'no';
-  return `'${userAnswer}' is wrong answer ;(. Correct answer was '${preparedCorrectAnswer}'.`;
-};
-
-const checkUserAnswer = (correctAnswer, userAnswer) => {
-  const isEven = checkIsEven(correctAnswer);
-  const isCorrectAnswer = (isEven && userAnswer === 'yes') || (!isEven && userAnswer === 'no');
-
-  return isCorrectAnswer;
+  return [question, answer];
 };
 
 export default () => {
+  const rounds = [];
+
+  for (let i = 0; i < roundsCount; i += 1) {
+    rounds.push(makeRound());
+  }
+
   run({
-    getGameRules, getTask, checkUserAnswer, getWrongAnswerMessage,
+    description,
+    rounds,
   });
 };
