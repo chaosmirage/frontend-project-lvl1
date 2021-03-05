@@ -1,55 +1,49 @@
-import run from '../index.js';
 import { getRandomInt } from '../lib/random.js';
+import run, { roundsCount } from '../index.js';
 
-const getGameRules = () => 'What is the result of the expression?';
+const description = 'What is the result of the expression?';
 
-const getRandomArithmeticOperation = () => {
-  const operationType = String(getRandomInt(1, 3));
+const getRandomArithmeticOperator = () => {
+  const operators = '+-*';
 
-  const operation = {
-    1: '+',
-    2: '-',
-    3: '*',
-  }[operationType];
+  const operatorIndex = getRandomInt(0, operators.length - 1);
+  const operator = operators[operatorIndex];
 
-  if (!operation) {
-    throw new Error(`Unexpected operation type ${operationType}`);
-  }
-
-  return operation;
+  return operator;
 };
 
-const evaluate = (leftOperand, operation, rightOperand) => {
-  if (operation === '+') {
-    return leftOperand + rightOperand;
+const evaluate = (leftOperand, operator, rightOperand) => {
+  switch (operator) {
+    case '+':
+      return leftOperand + rightOperand;
+    case '-':
+      return leftOperand - rightOperand;
+    case '*':
+      return leftOperand * rightOperand;
+    default:
+      throw new Error(`Unexpected operator: ${operator}`);
   }
-  if (operation === '-') {
-    return leftOperand - rightOperand;
-  }
-
-  return leftOperand * rightOperand;
 };
 
-const getTask = () => {
+const makeRound = () => {
   const leftOperand = getRandomInt(1, 100);
-  const operation = getRandomArithmeticOperation();
   const rightOperand = getRandomInt(1, 100);
+  const operator = getRandomArithmeticOperator();
 
-  const question = `${leftOperand} ${operation} ${rightOperand}`;
-  const answer = evaluate(leftOperand, operation, rightOperand);
-
-  return {
-    question,
-    answer,
-  };
+  const question = `${leftOperand} ${operator} ${rightOperand}`;
+  const answer = String(evaluate(leftOperand, operator, rightOperand));
+  return [question, answer];
 };
-
-const getWrongAnswerMessage = (correctAnswer, userAnswer) => `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`;
-
-const checkUserAnswer = (correctAnswer, userAnswer) => correctAnswer === Number(userAnswer);
 
 export default () => {
+  const rounds = [];
+
+  for (let i = 0; i < roundsCount; i += 1) {
+    rounds.push(makeRound());
+  }
+
   run({
-    getGameRules, getTask, checkUserAnswer, getWrongAnswerMessage,
+    description,
+    rounds,
   });
 };
