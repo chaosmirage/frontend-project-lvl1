@@ -23,9 +23,7 @@ export default ({ description, rounds }) => {
     const isUserAnswerWrong = userAnswer !== correctAnswer;
 
     if (isUserAnswerWrong) {
-      console.log(
-        `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'`
-      );
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'`);
       console.log(`Let's try again, ${userName}!`);
       return;
     }

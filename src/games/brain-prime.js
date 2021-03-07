@@ -1,8 +1,7 @@
 import run, { roundsCount } from '../index.js';
 import { getRandomInt } from '../lib/random.js';
 
-const description =
-  'Answer "yes" if given number is prime. Otherwise answer "no".';
+const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const checkIsPrime = (number) => {
   if (number === 1) {
