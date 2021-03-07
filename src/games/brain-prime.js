@@ -1,7 +1,8 @@
-import run from '../index.js';
+import run, { roundsCount } from '../index.js';
 import { getRandomInt } from '../lib/random.js';
 
-const getGameRules = () => 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const description =
+  'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const checkIsPrime = (number) => {
   if (number === 1) {
@@ -17,34 +18,24 @@ const checkIsPrime = (number) => {
   return true;
 };
 
-const getTask = () => {
+const makeRound = () => {
   const randomNumber = getRandomInt(1, 100);
 
-  return {
-    question: String(randomNumber),
-    answer: randomNumber,
-  };
-};
+  const question = String(randomNumber);
+  const answer = checkIsPrime(randomNumber) ? 'yes' : 'no';
 
-const getWrongAnswerMessage = (correctAnswer, userAnswer) => {
-  const isPrime = checkIsPrime(correctAnswer);
-  const preparedCorrectAnswer = isPrime ? 'yes' : 'no';
-
-  return `'${userAnswer}' is wrong answer ;(. Correct answer was '${preparedCorrectAnswer}'.`;
-};
-
-const checkUserAnswer = (correctAnswer, userAnswer) => {
-  const isPrime = checkIsPrime(correctAnswer);
-  const isCorrectAnswer = (isPrime && userAnswer === 'yes') || (!isPrime && userAnswer === 'no');
-
-  return isCorrectAnswer;
+  return [question, answer];
 };
 
 export default () => {
+  const rounds = [];
+
+  for (let i = 0; i < roundsCount; i += 1) {
+    rounds.push(makeRound());
+  }
+
   run({
-    getGameRules,
-    getTask,
-    checkUserAnswer,
-    getWrongAnswerMessage,
+    description,
+    rounds,
   });
 };

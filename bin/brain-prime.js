@@ -1,9 +1,5 @@
 #!/usr/bin/env node
 
-import cli from '../src/cli.js';
+import run from '../src/games/brain-prime.js';
 
-try {
-  cli('prime');
-} catch (error) {
-  console.log(error);
-}
+run();
