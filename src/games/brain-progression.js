@@ -1,7 +1,7 @@
-import run from '../index.js';
+import run, { roundsCount } from '../index.js';
 import { getRandomInt } from '../lib/random.js';
 
-const getGameRules = () => 'What number is missing in the progression?';
+const description = 'What number is missing in the progression?';
 
 const makeProgression = (length) => {
   const firstNumber = getRandomInt(1, 100);
@@ -16,7 +16,7 @@ const makeProgression = (length) => {
   return result;
 };
 
-const getTask = () => {
+const makeRound = () => {
   const progressionLength = getRandomInt(5, 10);
   const progression = makeProgression(progressionLength);
   const hiddenElementIndex = getRandomInt(0, progressionLength - 1);
@@ -31,20 +31,20 @@ const getTask = () => {
     }, [])
     .join(' ');
 
-  const answer = progression[hiddenElementIndex];
+  const answer = String(progression[hiddenElementIndex]);
 
-  return {
-    question,
-    answer,
-  };
+  return [question, answer];
 };
 
-const getWrongAnswerMessage = (correctAnswer, userAnswer) => `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`;
-
-const checkUserAnswer = (correctAnswer, userAnswer) => correctAnswer === Number(userAnswer);
-
 export default () => {
+  const rounds = [];
+
+  for (let i = 0; i < roundsCount; i += 1) {
+    rounds.push(makeRound());
+  }
+
   run({
-    getGameRules, getTask, checkUserAnswer, getWrongAnswerMessage,
+    description,
+    rounds,
   });
 };

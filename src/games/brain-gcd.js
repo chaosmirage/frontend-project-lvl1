@@ -10,7 +10,7 @@ const makeRound = () => {
   const rightOperand = getRandomInt(1, 100);
 
   const question = `${leftOperand} ${rightOperand}`;
-  const answer = evaluateGCD(leftOperand, rightOperand);
+  const answer = String(evaluateGCD(leftOperand, rightOperand));
 
   return [question, answer];
 };
